@@ -1,2 +1,13 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿// Задача 7: Напишите программу, которая принимает на вход
+// трёхзначное число и на выходе показывает последнюю цифру
+// этого числа.
+// 456 -> 6
+// 782 -> 2
+// 918 -> 8
+
+Console.WriteLine("Программа запрашивает трехзначное целое число и выводит его последнюю цифру");
+Console.Write("Введите трехзначное целое число: ");
+int num = Convert.ToInt32(Console.ReadLine());
+if ((num / 100) == 0) Console.WriteLine("Введеное число не трехзначное");
+else if ((num / 1000) != 0) Console.WriteLine("Введеное число не трехзначное");
+else Console.WriteLine($"Последняя цифра введенного числа {num}: {num % 100 % 10}");
