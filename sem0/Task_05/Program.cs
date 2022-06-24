@@ -5,11 +5,25 @@
 Console.WriteLine("Программа запрашивает целое число N выводит диапазон чисел от -N до N");
 Console.Write("Введите целое число N: ");
 int n = Convert.ToInt32(Console.ReadLine());
-int i = -n;
-Console.WriteLine("Полученный диапазон чисел от -N до N:");
-while (i < n)
+if (n > 0)
 {
-    Console.Write($"{i}, ");
-    i++;
+    int i = -n;
+    Console.WriteLine("Полученный диапазон чисел от -N до N:");
+    while (i < n)
+    {
+        Console.Write($"{i}, ");
+        i++;
+    }
+    Console.WriteLine(n);
 }
-Console.WriteLine(n);
+else
+{
+    int i = -n;
+    Console.WriteLine("Полученный диапазон чисел от -N до N:");
+    while (i > n)
+    {
+        Console.Write($"{i}, ");
+        i--;
+    }
+    Console.WriteLine(n);
+}
