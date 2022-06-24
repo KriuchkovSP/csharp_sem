@@ -4,8 +4,8 @@
 // 5 -> 2, 4
 // 8 -> 2, 4, 6, 8
 
-Console.WriteLine("Программа запрашивает целое положительное число N выводит все четные числа от 1 до N");
-Console.Write("Введите целое положительное число больше 0: ");
+Console.WriteLine("Программа запрашивает целое число N и выводит все четные числа от 1 до N");
+Console.Write("Введите целое число: ");
 int n = Convert.ToInt32(Console.ReadLine());
 if (n > 1)
 {
@@ -19,4 +19,15 @@ if (n > 1)
     if ((n % 2) == 0) Console.WriteLine(i);
     else Console.WriteLine(i);
 }
-else Console.WriteLine("Число <= 0");
+else
+{
+    Console.WriteLine("Полученные четные числа от 1 до N: "); //если введут отр числа, то диапазон от 1 до N(-12 например)
+    int i = -2;
+    while (i > n + 1)
+    {
+        Console.Write($"{i}, ");
+        i -= 2;
+    }
+    if ((n % 2) == 0) Console.WriteLine(i);
+    else Console.WriteLine(i);
+}
