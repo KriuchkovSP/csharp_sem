@@ -7,7 +7,7 @@
 
 int i = 0;
 int[] nummas = new int[3];
-int max_pos = 0;
+int max_pos = 1; //Чтобы не сравнивать с самим собой
 Console.WriteLine("Программа запрашивает 3 целых числа и выдает максимальное из них");
 while (i < 3)
 {
