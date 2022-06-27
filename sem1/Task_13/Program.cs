@@ -14,7 +14,6 @@ int ThirdDig(int number)
     number = Math.Abs(number); // Работаем с абсолютными значениями, чтобы отрабатывал
                                // функционал с отрицательными числами и не мешался "-"
     int digitCount = (int)Math.Log10(number) + 1; //Определяем количество разрядов
-    Console.WriteLine(digitCount);
     if (digitCount < 3 ) return -1; // Третьего числа нет
     int result = number % Convert.ToInt32(Math.Pow(10, digitCount - 2)) /
              Convert.ToInt32(Math.Pow(10, digitCount - 3)); // Тут по аналогии с Task 10
