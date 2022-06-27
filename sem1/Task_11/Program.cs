@@ -10,7 +10,9 @@ Console.WriteLine($"Случайное трехзначное число: {rndNu
 
 int CutMid (int num)
 {
-    return (num / 100) * 10 + num % 10;
+    int firstDig = num / 100 * 10;
+    int secondDig = num % 10;
+    return firstDig + secondDig;
 }
 int result = CutMid(rndNum);
 
