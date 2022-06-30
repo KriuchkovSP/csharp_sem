@@ -25,8 +25,8 @@ double Distance (int xta, int yta, int xtb, int ytb)
 
     // cat1 = Math.Abs(xta) - Math.Abs(xtb);
     // cat2 = Math.Abs(yta) - Math.Abs(ytb);
-    cat1 = xta - xtb;
-    cat2 = yta - ytb;
+    cat1 = Math.Max(xta, xtb) - Math.Min(xta, xtb);
+    cat2 = Math.Max(yta, ytb) - Math.Min(yta, ytb);
     result = Math.Sqrt(cat1 * cat1 + cat2 * cat2);
     return Math.Round(result,2);
 }
