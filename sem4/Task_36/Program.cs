@@ -1,7 +1,8 @@
-﻿// Задача 33: Задайте массив. Напишите программу, которая определяет,
-// присутствует ли заданное число в массиве.
-// 4; массив [6, 7, 19, 345, 3] -> нет
-// 3; массив [6, 7, 19, 345, 3] -> да 
+﻿// Задача 36: Задайте одномерный массив, заполненный случайными числами.
+// Найдите сумму элементов, стоящих на нечётных позициях.
+
+// [3, 7, 23, 12] -> 19
+// [-4, -6, 89, 6] -> 0
 
 int[] CreateArrayRndInt (int size, int begin, int end)
 {
@@ -25,34 +26,30 @@ void PrintArr(int[] array)
     }
 }
 
-bool SearchElem (int[] array, int elem)
+void PrintResult(int result)
 {
-    for (int i = 0; i < array.Length; i++)
-    {
-        if (array[i] == elem) return true;
-    }
-    return false;
+    Console.WriteLine($"Сумма элементов на нечетных позициях: {result}");
 }
 
-void PrintRes (bool resSearch)
+int GetSumNParEl (int[] array)
 {
-    string res = resSearch ? "Искомый элемент присутствует в массиве" : "Искомый элемент отсутствует в массиве";
-    Console.WriteLine(res);
+    int sum = 0;
+    for (int i = 1; i < array.Length; i += 2)
+    {
+        sum += array[i];
+    }
+    return sum;
 }
 
 Console.Write ("Введите размер массива: ");
-// int insize = 12;
 int insize = Convert.ToInt32(Console.ReadLine ());
 Console.Write ("Введите минимальное число диапазона: ");
 int min = Convert.ToInt32(Console.ReadLine ());
 Console.Write ("Введите максимальное число диапазона: ");
 int max =  Convert.ToInt32(Console.ReadLine ());
-Console.Write ("Введите значение для поиска: ");
-int elem =  Convert.ToInt32(Console.ReadLine ());
-
 
 int[] genarr = CreateArrayRndInt(insize, min, max);
+int res = GetSumNParEl(genarr);
 
-PrintArr(arr);
-bool resultSearch = SearchElem(arr, elem);
-PrintRes(resultSearch);
+PrintArr(genarr);
+PrintResult(res);

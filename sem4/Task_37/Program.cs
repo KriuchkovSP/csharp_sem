@@ -1,7 +1,9 @@
-﻿// Задача 33: Задайте массив. Напишите программу, которая определяет,
-// присутствует ли заданное число в массиве.
-// 4; массив [6, 7, 19, 345, 3] -> нет
-// 3; массив [6, 7, 19, 345, 3] -> да 
+﻿// Задача 37: Найдите произведение пар чисел в одномерном массиве.
+// Парой считаем первый и последний элемент, второй и предпоследний и т.д.
+// Результат запишите в новом массиве.
+// [1 2 3 4 5] -> 5 8 3
+// [6 7 3 6] -> 36 21 
+
 
 int[] CreateArrayRndInt (int size, int begin, int end)
 {
@@ -25,34 +27,31 @@ void PrintArr(int[] array)
     }
 }
 
-bool SearchElem (int[] array, int elem)
+int[] MulArrEl (int[] array)
 {
-    for (int i = 0; i < array.Length; i++)
+    int len = 0;
+    if (array.Length % 2 == 0) len = array.Length / 2;
+    else len = array.Length / 2 + 1;
+    int[] ResArr = new int[len];
+    for (int i = 0; i < len; i++)
     {
-        if (array[i] == elem) return true;
+        ResArr[i] = array[i] * array[array.Length - 1 - i]; 
     }
-    return false;
-}
+    if (array.Length % 2 != 0) ResArr[len - 1] = array[len - 1];
 
-void PrintRes (bool resSearch)
-{
-    string res = resSearch ? "Искомый элемент присутствует в массиве" : "Искомый элемент отсутствует в массиве";
-    Console.WriteLine(res);
+    return ResArr;
 }
 
 Console.Write ("Введите размер массива: ");
-// int insize = 12;
+
 int insize = Convert.ToInt32(Console.ReadLine ());
 Console.Write ("Введите минимальное число диапазона: ");
 int min = Convert.ToInt32(Console.ReadLine ());
 Console.Write ("Введите максимальное число диапазона: ");
 int max =  Convert.ToInt32(Console.ReadLine ());
-Console.Write ("Введите значение для поиска: ");
-int elem =  Convert.ToInt32(Console.ReadLine ());
-
 
 int[] genarr = CreateArrayRndInt(insize, min, max);
+int[] resArr = MulArrEl(genarr);
 
-PrintArr(arr);
-bool resultSearch = SearchElem(arr, elem);
-PrintRes(resultSearch);
+PrintArr(genarr);
+PrintArr(resArr);

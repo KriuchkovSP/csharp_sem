@@ -1,7 +1,20 @@
-﻿// Задача 33: Задайте массив. Напишите программу, которая определяет,
-// присутствует ли заданное число в массиве.
-// 4; массив [6, 7, 19, 345, 3] -> нет
-// 3; массив [6, 7, 19, 345, 3] -> да 
+﻿// Задача 35: Задайте одномерный массив из 123 случайных чисел.
+// Найдите количество элементов массива, значения которых лежат в отрезке [10,99].
+// Пример для массива из 5, а не 123 элементов.
+// В своём решении сделайте для 123
+// [5, 18, 123, 6, 2] -> 1 
+// [1, 2, 3, 6, 2] -> 0
+// [10, 11, 12, 13, 14] -> 5
+
+int SearchElem (int[] array, int begin, int end)
+{
+    int count = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] >= begin && array[i] <= end) count++;
+    }
+    return count;
+}
 
 int[] CreateArrayRndInt (int size, int begin, int end)
 {
@@ -25,34 +38,22 @@ void PrintArr(int[] array)
     }
 }
 
-bool SearchElem (int[] array, int elem)
+void PrintRes(int res)
 {
-    for (int i = 0; i < array.Length; i++)
-    {
-        if (array[i] == elem) return true;
-    }
-    return false;
-}
-
-void PrintRes (bool resSearch)
-{
-    string res = resSearch ? "Искомый элемент присутствует в массиве" : "Искомый элемент отсутствует в массиве";
-    Console.WriteLine(res);
+    Console.WriteLine ($"Количество элементов массива, входящих в диапазон [10...99]: {res}");
 }
 
 Console.Write ("Введите размер массива: ");
-// int insize = 12;
+
 int insize = Convert.ToInt32(Console.ReadLine ());
 Console.Write ("Введите минимальное число диапазона: ");
 int min = Convert.ToInt32(Console.ReadLine ());
 Console.Write ("Введите максимальное число диапазона: ");
 int max =  Convert.ToInt32(Console.ReadLine ());
-Console.Write ("Введите значение для поиска: ");
-int elem =  Convert.ToInt32(Console.ReadLine ());
-
 
 int[] genarr = CreateArrayRndInt(insize, min, max);
 
-PrintArr(arr);
-bool resultSearch = SearchElem(arr, elem);
-PrintRes(resultSearch);
+int result = SearchElem(genarr, 10, 99);
+
+PrintArr(genarr);
+PrintRes(result);
