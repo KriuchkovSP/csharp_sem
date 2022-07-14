@@ -1,7 +1,8 @@
-﻿// Задача 33: Задайте массив. Напишите программу, которая определяет,
-// присутствует ли заданное число в массиве.
-// 4; массив [6, 7, 19, 345, 3] -> нет
-// 3; массив [6, 7, 19, 345, 3] -> да 
+﻿// Задача 39: Напишите программу, которая перевернёт
+// одномерный массив (последний элемент будет на первом
+// месте, а первый - на последнем и т.д.)
+// [1 2 3 4 5] -> [5 4 3 2 1]
+// [6 7 3 6] -> [6 3 7 6]
 
 int[] CreateArrayRndInt (int size, int begin, int end)
 {
@@ -25,34 +26,33 @@ void PrintArr(int[] array)
     }
 }
 
-bool SearchElem (int[] array, int elem)
+void Reverse(int[] array)
 {
-    for (int i = 0; i < array.Length; i++)
+    int temp = 0;
+    int size = array.Length;
+    int index1 = 0;
+    int index2 = size - 1;
+    while (index1 < index2)
     {
-        if (array[i] == elem) return true;
+        temp = array[index1];
+        array[index1] = array[index2];
+        array[index2] = temp;
+        
+        index1++;
+        index2--;
     }
-    return false;
-}
-
-void PrintRes (bool resSearch)
-{
-    string res = resSearch ? "Искомый элемент присутствует в массиве" : "Искомый элемент отсутствует в массиве";
-    Console.WriteLine(res);
 }
 
 Console.Write ("Введите размер массива: ");
-// int insize = 12;
+
 int insize = Convert.ToInt32(Console.ReadLine ());
 Console.Write ("Введите минимальное число диапазона: ");
 int min = Convert.ToInt32(Console.ReadLine ());
 Console.Write ("Введите максимальное число диапазона: ");
 int max =  Convert.ToInt32(Console.ReadLine ());
-Console.Write ("Введите значение для поиска: ");
-int elem =  Convert.ToInt32(Console.ReadLine ());
-
 
 int[] genarr = CreateArrayRndInt(insize, min, max);
 
 PrintArr(genarr);
-bool resultSearch = SearchElem(genarr, elem);
-PrintRes(resultSearch);
+Reverse(genarr);
+PrintArr(genarr);

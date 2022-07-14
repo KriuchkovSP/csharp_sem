@@ -1,7 +1,6 @@
-﻿// Задача 33: Задайте массив. Напишите программу, которая определяет,
-// присутствует ли заданное число в массиве.
-// 4; массив [6, 7, 19, 345, 3] -> нет
-// 3; массив [6, 7, 19, 345, 3] -> да 
+﻿// Задача 45: Напишите программу, которая будет создавать
+// копию заданного массива с помощью поэлементного
+// копирования.
 
 int[] CreateArrayRndInt (int size, int begin, int end)
 {
@@ -25,34 +24,27 @@ void PrintArr(int[] array)
     }
 }
 
-bool SearchElem (int[] array, int elem)
+int[] CopyArray (int[] array)
 {
+    int[] arraynew = new int[array.Length];
+
     for (int i = 0; i < array.Length; i++)
     {
-        if (array[i] == elem) return true;
+        arraynew[i] = array[i];
     }
-    return false;
-}
-
-void PrintRes (bool resSearch)
-{
-    string res = resSearch ? "Искомый элемент присутствует в массиве" : "Искомый элемент отсутствует в массиве";
-    Console.WriteLine(res);
+    return arraynew;
 }
 
 Console.Write ("Введите размер массива: ");
-// int insize = 12;
+
 int insize = Convert.ToInt32(Console.ReadLine ());
 Console.Write ("Введите минимальное число диапазона: ");
 int min = Convert.ToInt32(Console.ReadLine ());
 Console.Write ("Введите максимальное число диапазона: ");
 int max =  Convert.ToInt32(Console.ReadLine ());
-Console.Write ("Введите значение для поиска: ");
-int elem =  Convert.ToInt32(Console.ReadLine ());
-
 
 int[] genarr = CreateArrayRndInt(insize, min, max);
+int[] copyarr = CopyArray(genarr);
 
 PrintArr(genarr);
-bool resultSearch = SearchElem(genarr, elem);
-PrintRes(resultSearch);
+PrintArr(copyarr);
